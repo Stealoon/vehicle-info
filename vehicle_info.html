@@ -20,12 +20,9 @@
             padding: 20px;
         }
         .result-container {
-            background: white;
-            border-radius: 8px;
             padding: 30px;
             max-width: 500px;
             width: 100%;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         .title {
             font-size: 18px;
@@ -38,34 +35,8 @@
             font-size: 16px;
             color: #333;
             line-height: 1.8;
-            margin-bottom: 30px;
             text-align: center;
             word-break: break-all;
-        }
-        .button-group {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .btn {
-            padding: 10px 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background: #f8f8f8;
-            color: #666;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .btn:hover {
-            background: #e8e8e8;
-            border-color: #ccc;
-        }
-        .btn:active {
-            background: #ddd;
         }
     </style>
 </head>
@@ -73,41 +44,6 @@
     <div class="result-container">
         <div class="title">扫码结果</div>
         <div class="content">车号:豫 EV2338,有效期至:2028年12月。</div>
-        <div class="button-group">
-            <button class="btn" onclick="copyText()">复制文本</button>
-            <a href="https://qr.alipay.com/" class="btn" target="_blank">支付宝扫码</a>
-            <a href="weixin://" class="btn">微信扫码</a>
-        </div>
     </div>
-    <script>
-        function copyText() {
-            const text = '车号:豫 EV2338,有效期至:2028年12月。';
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).then(function() {
-                    alert('文本已复制到剪贴板');
-                }).catch(function(err) {
-                    console.error('复制失败:', err);
-                    fallbackCopyText(text);
-                });
-            } else {
-                fallbackCopyText(text);
-            }
-        }
-        function fallbackCopyText(text) {
-            const textArea = document.createElement('textarea');
-            textArea.value = text;
-            textArea.style.position = 'fixed';
-            textArea.style.opacity = '0';
-            document.body.appendChild(textArea);
-            textArea.select();
-            try {
-                document.execCommand('copy');
-                alert('文本已复制到剪贴板');
-            } catch (err) {
-                alert('复制失败，请手动复制');
-            }
-            document.body.removeChild(textArea);
-        }
-    </script>
 </body>
 </html>
